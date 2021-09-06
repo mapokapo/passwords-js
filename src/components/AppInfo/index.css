@@ -1,0 +1,101 @@
+.AppInfo {
+	flex: 1;
+	padding: 16px;
+}
+
+.AppInfo hr {
+	margin: 32px 0;
+}
+
+.AppInfo span {
+	margin-left: 6px;
+}
+
+.AppInfo div {
+	display: flex;
+	align-items: center;
+	margin-top: 4px;
+}
+
+.AppInfo div span {
+	background-color: #848484;
+	border: 1px solid transparent;
+	border-radius: 12px;
+	font-size: 36px;
+	padding: 4px 12px;
+	color: #fff;
+	user-select: none;
+	color: #848484;
+	margin-left: 0;
+	min-width: 35%;
+}
+
+.AppInfo div span.visible {
+	background-color: #fff;
+	border: 1px solid #000;
+	border-radius: 12px;
+	font-size: 36px;
+	padding: 4px 12px;
+	color: #000;
+}
+
+.AppInfo div button {
+	background-color: transparent;
+	border: none;
+	margin: 0 8px;	
+}
+
+.AppInfo>div button>svg {
+	cursor: pointer;
+}
+
+.AppInfo h2 {
+	margin-left: 6px;
+	margin-top: 8px;
+}
+
+.AppInfo div.chips {
+	display: flex;
+	margin-top: 8px;
+	flex-wrap: wrap;
+}
+
+.AppInfo div.chips div {
+	position: relative;
+	margin-left: 4px;
+}
+
+.AppInfo div.chips div > *:first-child {
+	user-select: none;
+	color: #C4C4C4;
+	background-color: #C4C4C4;
+	border: 1px solid transparent;
+	font-size: 24px;
+	padding: 4px 16px;
+	border-radius: 8px;
+	margin-left: 0;
+	min-width: auto;
+}
+
+.AppInfo div.chips div > *:nth-child(2) {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-left: 0;
+}
+
+.AppInfo div.chips div.visible > *:first-child {
+	user-select: all;
+	background-color: #fff;
+	border: 1px solid #000;
+	border-radius: 8px;
+	font-size: 24px;
+	padding: 4px 16px;
+	color: #000;
+	display: inline-block;
+	box-sizing: border-box;
+}
+
+.AppInfo div.chips div.visible>*:nth-child(2) {
+	display: none;
+}

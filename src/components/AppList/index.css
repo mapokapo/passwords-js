@@ -1,0 +1,35 @@
+.AppList {
+	min-width: 384px;
+	max-width: 20%;
+	width: 100%;
+	border-right: 1px solid #000;
+	display: flex;
+	flex-direction: column;
+}
+
+@media only screen and (max-width: 700px) {
+	.AppList {
+		min-width: 200px;
+	}
+}
+
+.AppList > span {
+	margin: 16px;
+	display: inline-block;
+}
+
+.AppList > a > span {
+	display: inline-block;
+	margin: 0 auto;
+	padding: 4px 16px;
+	font-size: 24px;
+	border: 1px solid #000;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: 0.3s background-color;
+	background-color: #eee;
+}
+
+.AppList > a > span:hover {
+	background-color: #ddd;
+}
