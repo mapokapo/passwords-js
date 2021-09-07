@@ -13,11 +13,15 @@ type Params = { appId: string };
 
 function AppTile(props: Props) {
   const { app, setSelected } = props;
-  const route = useRouteMatch<Params>({
+  const infoRoute = useRouteMatch<Params>({
     path: "/:appId?",
     exact: true,
   });
-  const appId = route?.params.appId;
+  const editRoute = useRouteMatch<Params>({
+    path: "/edit/:appId?",
+    exact: true,
+  });
+  const appId = infoRoute?.params.appId || editRoute?.params.appId;
 
   return (
     <Link to={app.id.toString()} onClick={() => setSelected(true)}>

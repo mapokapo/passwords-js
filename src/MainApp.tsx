@@ -11,6 +11,7 @@ import StatusBar from "./components/StatusBar";
 import { UserDataContext } from "./context/UserPassContext";
 import * as faIcons from "react-icons/fa";
 import { MdLock } from "react-icons/md";
+import EditItem from "./components/EditItem";
 
 function MainApp() {
   let [passwordHash, setPasswordHash] = useState("");
@@ -38,6 +39,8 @@ function MainApp() {
     return app;
   });
 
+  console.log(loggedIn);
+
   return (
     <UserDataContext.Provider
       value={{
@@ -49,7 +52,7 @@ function MainApp() {
         setApps,
       }}
     >
-      <div className="App">
+      <div className="MainApp">
         <StatusBar />
         <main>
           {passwordHash === "" ? (
@@ -61,6 +64,7 @@ function MainApp() {
               <AppList />
               <Switch>
                 <Route path="/add" component={AddItem} />
+                <Route path="/edit/:appId?" component={EditItem} />
                 <Route path="/:appId?" component={AppInfo} />
               </Switch>
             </>

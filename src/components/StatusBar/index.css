@@ -27,13 +27,22 @@
 	}
 }
 
-.StatusBar>div:nth-child(2) svg {
+.StatusBar div button {
 	padding: 4px;
 	cursor: pointer;
+	background-color: transparent;
+	border: none;
+	color: #fff;
 
 }
 
-.StatusBar > div:nth-child(2) svg:hover {
+.StatusBar div button:hover {
 	background-color: #666;
 	border-radius: 50%;
+}
+
+.StatusBar>div>button.logout {
+	margin-left: auto;
+	margin-right: 16px;
+	padding: 8px;
 }

@@ -33,13 +33,14 @@ function RegisterPage() {
   return (
     <div className="RegisterPage">
       <h1>Register</h1>
+      <span>Enter password:</span>
       <input
         type="text"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
       <span className={error ? "visible" : ""}>{error}</span>
-      <button type="submit" onClick={() => register()}>
+      <button aria-label="Register" type="submit" onClick={() => register()}>
         Register
       </button>
     </div>

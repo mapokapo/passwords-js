@@ -1,6 +1,5 @@
 interface App {
   id: number;
-  selected: boolean;
   name: string;
   defaultColor: string;
   icon: Function;

@@ -1,6 +1,9 @@
 .AppInfo {
 	flex: 1;
+	display: flex;
+	flex-direction: column;
 	padding: 16px;
+	min-height: calc(100vh - 56px);
 }
 
 .AppInfo hr {
@@ -11,13 +14,13 @@
 	margin-left: 6px;
 }
 
-.AppInfo div {
+.AppInfo > div {
 	display: flex;
 	align-items: center;
 	margin-top: 4px;
 }
 
-.AppInfo div span {
+.AppInfo > div > input {
 	background-color: #848484;
 	border: 1px solid transparent;
 	border-radius: 12px;
@@ -28,15 +31,19 @@
 	color: #848484;
 	margin-left: 0;
 	min-width: 35%;
+	max-width: 50%;
+	outline: none;
 }
 
-.AppInfo div span.visible {
+.AppInfo>div>input.visible {
 	background-color: #fff;
 	border: 1px solid #000;
 	border-radius: 12px;
 	font-size: 36px;
 	padding: 4px 12px;
 	color: #000;
+	outline: unset;
+	user-select: all;
 }
 
 .AppInfo div button {
@@ -63,9 +70,11 @@
 .AppInfo div.chips div {
 	position: relative;
 	margin-left: 4px;
+	display: flex;
 }
 
 .AppInfo div.chips div > *:first-child {
+	display: inline-block;
 	user-select: none;
 	color: #C4C4C4;
 	background-color: #C4C4C4;
@@ -74,12 +83,13 @@
 	padding: 4px 16px;
 	border-radius: 8px;
 	margin-left: 0;
-	min-width: auto;
+	margin: 4px 6px;
 }
 
 .AppInfo div.chips div > *:nth-child(2) {
 	position: absolute;
 	left: 50%;
+	top: 8px;
 	transform: translateX(-50%);
 	margin-left: 0;
 }
@@ -98,4 +108,35 @@
 
 .AppInfo div.chips div.visible>*:nth-child(2) {
 	display: none;
+}
+
+.AppInfo > div.actionButtons {
+	display: flex;
+	margin: auto;
+	margin-bottom: 32px;
+	border: 1px solid #000;
+	border-radius: 16px;
+	overflow: hidden;
+}
+
+.AppInfo>div.actionButtons>button {
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
+	padding: 6px 8px;
+	margin: 0;
+	width: 100%;
+	cursor: pointer;
+	transition: 0.3s background-color;
+}
+
+.AppInfo>div.actionButtons>button:hover {
+	background-color: #ddd;
+}
+
+.AppInfo>div.actionButtons>button:last-child {
+	background-color: #f00;
+}
+
+.AppInfo>div.actionButtons>button >svg {
+	cursor: unset;
 }

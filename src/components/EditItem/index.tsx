@@ -6,18 +6,32 @@ import * as faIcons from "react-icons/fa";
 import { MdLock } from "react-icons/md";
 import App from "../../classes/App";
 import { UserDataContext } from "../../context/UserPassContext";
-import { useHistory } from "react-router";
+import { useHistory, useRouteMatch } from "react-router";
 
-function AddItem() {
-  const [appName, setAppName] = useState("");
-  const [password, setPassword] = useState("");
-  const [authCode, setAuthCode] = useState("");
-  const [recoveryCodes, setRecoveryCodes] = useState<string[]>([""]);
-  const [errors, setErrors] = useState<(string | undefined)[] | null>(null);
+type Params = { appId: string };
+
+function EditItem() {
+  const route = useRouteMatch<Params>({
+    path: "/edit/:appId?",
+    exact: true,
+  });
   const { apps, setApps } = useContext(UserDataContext);
+
+  const app: App | null =
+    apps.find((a) => a.id.toString() === route?.params.appId) || null;
+
+  const [appName, setAppName] = useState(app?.name || "");
+  const [password, setPassword] = useState(app?.password || "");
+  const [authCode, setAuthCode] = useState(app?.authCode || "");
+  const [recoveryCodes, setRecoveryCodes] = useState<string[]>(
+    app?.recoveryCodes || [""]
+  );
+  if (recoveryCodes[recoveryCodes?.length - 1]?.length !== 0)
+    recoveryCodes.push("");
+  const [errors, setErrors] = useState<(string | undefined)[] | null>(null);
   const history = useHistory();
 
-  function addApp() {
+  function editApp() {
     // index 0 is icon name, index 1 is icon component (function)
     let _errors = null;
     if (appName.length === 0) {
@@ -38,9 +52,9 @@ function AddItem() {
     }
 
     const newApp: App = {
-      id: Math.floor(Math.random() * 10000000000),
+      id: app?.id || Math.floor(Math.random() * 10000000000),
       name: appName.trim(),
-      defaultColor: randomColor(),
+      defaultColor: app?.defaultColor || randomColor(),
       icon: appIcon,
       authCode: authCode.trim().length !== 0 ? authCode.trim() : null,
       recoveryCodes: (recoveryCodes[recoveryCodes.length - 1]?.length === 0
@@ -51,8 +65,7 @@ function AddItem() {
     };
 
     const newApps = [...apps];
-    newApps.push(newApp);
-
+    newApps[newApps.findIndex((a) => app?.id === a.id)] = newApp;
     setApps(newApps);
 
     localStorage.setItem(
@@ -64,7 +77,7 @@ function AddItem() {
   }
 
   return (
-    <div className="AddItem">
+    <div className="EditItem">
       <h3>App name</h3>
       <input
         type="text"
@@ -107,6 +120,7 @@ function AddItem() {
               const newCodes = [...recoveryCodes];
               newCodes[i] = e.target.value;
               if (newCodes[newCodes.length - 1].length !== 0) newCodes.push("");
+
               if (
                 newCodes[newCodes.length - 1].length === 0 &&
                 newCodes[newCodes.length - 2]?.length === 0
@@ -121,11 +135,11 @@ function AddItem() {
         {errors && errors[3] ? errors[3] : ""}
       </span>
       <hr />
-      <button aria-label="Add app" type="submit" onClick={() => addApp()}>
-        Add
+      <button aria-label="Save app" type="submit" onClick={() => editApp()}>
+        Save
       </button>
     </div>
   );
 }
 
-export default AddItem;
+export default EditItem;

@@ -1,12 +1,14 @@
-.App {
+.MainApp {
   display: flex;
   flex-direction: column;
   flex: 1;
   min-width: 60%;
   min-height: 60%;
+  width: 100%;
+  overflow-x: hidden;
 }
 
-.App main {
+.MainApp main {
   flex: 1;
   display: flex;
   align-items: stretch;

@@ -38,13 +38,14 @@ function LoginPage() {
   return (
     <div className="LoginPage">
       <h1>Login</h1>
+      <span>Enter password:</span>
       <input
         type="text"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
       <span className={error ? "visible" : ""}>{error}</span>
-      <button type="submit" onClick={() => login()}>
+      <button aria-label="Log in" type="submit" onClick={() => login()}>
         Login
       </button>
     </div>

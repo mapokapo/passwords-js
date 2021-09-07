@@ -18,7 +18,6 @@ export const decrypt = (salt: string, encoded: string): string => {
     text.split("").map((c) => c.charCodeAt(0));
   const applySaltToChar = (code: number) =>
     textToChars(salt).reduce((a, b) => a ^ b, code);
-  console.log(encoded.match(/.{1,2}/g));
   return encoded
     .match(/.{1,2}/g)!
     .map((hex) => parseInt(hex, 16))
